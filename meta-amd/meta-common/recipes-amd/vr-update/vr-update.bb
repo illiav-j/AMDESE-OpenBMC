@@ -18,8 +18,8 @@ DEPENDS += " \
     nlohmann-json \
     "
 
-SRC_URI = "git://git@github.com:/AMDESE/vr-firmware-update.git;branch=main;protocol=ssh"
-SRCREV = "${AUTOREV}"
+SRC_URI = "git://github.com/AMDESE/vr-firmware-update.git;protocol=https;branch=main"
+SRCREV = "9cbe4a51bc475638da4c6f2db94f4576cb546df4"
 
 S = "${WORKDIR}/git"
 

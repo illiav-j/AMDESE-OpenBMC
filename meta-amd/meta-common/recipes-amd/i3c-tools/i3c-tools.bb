@@ -6,8 +6,8 @@ FILESEXTRAPATHS:prepend := "${THISDIR}:"
 #which does not have a license, so using "closed" for now
 LICENSE = "CLOSED"
 
-SRC_URI = "git://git@github.com/AspeedTech-BMC/i3c-tools.git;protocol=https"
-SRCREV = "${AUTOREV}"
+SRC_URI = "git://git@github.com/AspeedTech-BMC/i3c-tools.git;protocol=https;branch=master"
+SRCREV = "65f947d74e3a5d33992549a0a1900481bdef95b4"
 
 S="${WORKDIR}/git"
 

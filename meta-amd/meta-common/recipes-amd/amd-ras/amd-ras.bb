@@ -14,8 +14,8 @@ def get_service(d):
     return "com.amd.crashdump.service"
 
 SYSTEMD_SERVICE:${PN} = "${@get_service(d)}"
-SRC_URI = "git://git@github.com:/AMDESE/amd-bmc-ras.git;branch=main;protocol=ssh"
-SRCREV = "${AUTOREV}"
+SRC_URI = "git://github.com/AMDESE/amd-bmc-ras.git;protocol=https;branch=main"
+SRCREV = "006f8134a7586f76e2b15528fd01d960d0169441"
 
 S = "${WORKDIR}/git"
 
