@@ -1,7 +1,7 @@
 SUMMARY = "AMD LCD Display Interface Library"
 DESCRIPTION = "AMD LCD display Interface Library to display user data"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}:"
 
 LICENSE = "CLOSED"
 

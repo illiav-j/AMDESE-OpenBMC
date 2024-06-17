@@ -14,7 +14,7 @@ SRC_URI += " \
         file://dimm-re-bind.sh   \
         file://dimm-info.sh \
         "
-RDEPENDS_${PN} += "bash"
+RDEPENDS:${PN} += "bash"
 S="${WORKDIR}"
 
 

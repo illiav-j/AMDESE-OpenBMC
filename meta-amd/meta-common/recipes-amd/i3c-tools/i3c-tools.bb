@@ -1,6 +1,6 @@
 SUMMARY = "Aspeedtech I3C tools adapted by AMD"
 DESCRIPTION = "To build I3C tools"
-FILESEXTRAPATHS_prepend := "${THISDIR}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}:"
 
 #Code pulled from https://github.com/vitor-soares-snps/i3c-tools.git
 #which does not have a license, so using "closed" for now

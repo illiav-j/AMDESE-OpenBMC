@@ -1,7 +1,7 @@
 SUMMARY = "VR Update application"
 DESCRIPTION = "Used for performing VR updates through BMC"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}:"
 
 LICENSE = "CLOSED"
 
@@ -23,8 +23,8 @@ SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
 
-INSANE_SKIP_${PN} += "ldflags"
-RDEPENDS_${PN} += "bash"
+INSANE_SKIP:${PN} += "ldflags"
+RDEPENDS:${PN} += "bash"
 
 do_install() {
         install -d ${D}${sbindir}

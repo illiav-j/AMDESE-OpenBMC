@@ -1,13 +1,13 @@
 SUMMARY = "AMD EPYC System Management Interface Library"
 DESCRIPTION = "AMD EPYC System Management Interface Library for user space APML implementation"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}:"
 
 LICENSE = "CLOSED"
 
 DEPENDS += "i2c-tools"
 DEPENDS += "i3c-tools"
-RDEPENDS_${PN} += "bash"
+RDEPENDS:${PN} += "bash"
 
 SRC_URI += "git://git@github.com/amd/apml_library.git;protocol=ssh"
 #SRC_URI += "git://git@github.com/amd/esmi_oob_library.git;protocol=ssh"

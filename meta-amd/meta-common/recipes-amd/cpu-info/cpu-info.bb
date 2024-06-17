@@ -15,7 +15,7 @@ inherit cmake pkgconfig systemd
 def get_service(d):
       return "xyz.openbmc_project.Inventory.Item.Cpu_info.service"
 
-SYSTEMD_SERVICE_${PN} = "${@get_service(d)}"
+SYSTEMD_SERVICE:${PN} = "${@get_service(d)}"
 
 DEPENDS += " \
     amd-apml \
@@ -26,9 +26,9 @@ DEPENDS += " \
     sdbusplus \
     "
 
-RDEPENDS_${PN} += "amd-apml"
+RDEPENDS:${PN} += "amd-apml"
 
-FILES_${PN}  += "${systemd_system_unitdir}/xyz.openbmc_project.Inventory.Item.Cpu_info.service"
+FILES:${PN}  += "${systemd_system_unitdir}/xyz.openbmc_project.Inventory.Item.Cpu_info.service"
 
 
 
