@@ -6,6 +6,13 @@ and applies the power cap values to the SOC using esmi oob library API's"
 SRC_URI = "git://github.com/AMDESE/amd-power-cap.git;protocol=https;branch=main"
 SRCREV = "8ad293b364e27d741242a4ce818d2e8ff26484ee"
 
+SRC_URI += "\
+            file://0001-Fix-UB-on-getProperty-failure.patch \
+            file://0002-Fix-popen-return-value-check.patch \
+            file://0003-Fix-systemd-unit-install-path.patch \
+            file://0004-Switch-to-CPP20.patch \
+            "
+
 S = "${WORKDIR}/git"
 
 LICENSE = "CLOSED"

@@ -1,0 +1,22 @@
+From 3c6aeac2fc1dc75d802007896cc84ab0e019dade Mon Sep 17 00:00:00 2001
+From: Illia Volchanetskyi <Illia_Volchanetskyi6439@jabil.com>
+Date: Wed, 19 Jun 2024 10:47:10 +0300
+Subject: [PATCH] Fix popen return value check
+
+---
+ src/power_cap.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/power_cap.cpp b/src/power_cap.cpp
+index eebc2aa..14633fb 100644
+--- a/src/power_cap.cpp
++++ b/src/power_cap.cpp
+@@ -172,7 +172,7 @@ bool PowerCap::get_num_of_proc()
+     // variable board_id.
+     pf = popen(COMMAND_NUM_OF_CPU,"r");
+ 
+-    if(pf > 0)
++    if(!pf)
+     {   // no error
+         if (fgets(data, COMMAND_LEN , pf) != NULL)
+         {
