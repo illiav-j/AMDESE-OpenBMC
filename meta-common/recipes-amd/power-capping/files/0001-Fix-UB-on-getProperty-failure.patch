@@ -1,0 +1,41 @@
+From 1f82a5968e1155040d8ecf275a8ffebb638d3fd2 Mon Sep 17 00:00:00 2001
+From: Illia Volchanetskyi <Illia_Volchanetskyi6439@jabil.com>
+Date: Wed, 19 Jun 2024 10:47:04 +0300
+Subject: [PATCH] Fix UB on getProperty failure
+
+---
+ src/power_cap.cpp | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/src/power_cap.cpp b/src/power_cap.cpp
+index 037ca31..eebc2aa 100644
+--- a/src/power_cap.cpp
++++ b/src/power_cap.cpp
+@@ -329,9 +329,16 @@ void PowerCap::get_power_cap_limit()
+ {
+     std::string settingManager = getService(bus, POWER_PATH.c_str() , POWER_INTERFACE);
+ 
+-    AppliedPowerCapData = getProperty<uint32_t>(bus, settingManager.c_str(),
+-                                           POWER_PATH.c_str(),
+-                                           POWER_INTERFACE, POWER_CAP_STR) ;
++    try
++    {
++        AppliedPowerCapData = getProperty<uint32_t>(bus, settingManager.c_str(),
++                                               POWER_PATH.c_str(),
++                                               POWER_INTERFACE, POWER_CAP_STR) ;
++    }
++    catch (const sdbusplus::exception::SdBusError& ex)
++    {
++        sd_journal_print(LOG_ERR, "sdbus error \n");
++    }
+ }
+ 
+ bool PowerCap::get_power_cap_enabled_setting()
+@@ -369,6 +376,7 @@ T PowerCap::getProperty(sdbusplus::bus::bus& bus, const char* service, const cha
+     catch (const sdbusplus::exception::SdBusError& ex)
+     {
+         sd_journal_print(LOG_ERR, "GetProperty call failed \n");
++        throw;
+     }
+ }
+ 

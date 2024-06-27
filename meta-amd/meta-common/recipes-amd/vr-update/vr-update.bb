@@ -1,7 +1,7 @@
 SUMMARY = "VR Update application"
 DESCRIPTION = "Used for performing VR updates through BMC"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}:"
 
 LICENSE = "CLOSED"
 
@@ -18,13 +18,18 @@ DEPENDS += " \
     nlohmann-json \
     "
 
-SRC_URI = "git://git@github.com:/AMDESE/vr-firmware-update.git;branch=main;protocol=ssh"
-SRCREV = "${AUTOREV}"
+SRC_URI = "git://github.com/AMDESE/vr-firmware-update.git;protocol=https;branch=main"
+SRCREV = "9cbe4a51bc475638da4c6f2db94f4576cb546df4"
+
+SRC_URI += "\
+            file://0001-Fix-i2c_smbus_read_i2c_block_data-return-value-check.patch \
+            file://0002-Switch-to-CPP20.patch \
+            "
 
 S = "${WORKDIR}/git"
 
-INSANE_SKIP_${PN} += "ldflags"
-RDEPENDS_${PN} += "bash"
+INSANE_SKIP:${PN} += "ldflags"
+RDEPENDS:${PN} += "bash"
 
 do_install() {
         install -d ${D}${sbindir}

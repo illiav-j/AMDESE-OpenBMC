@@ -3,8 +3,15 @@ DESCRIPTION = "Power capping monitors the dbus interface\
 xyz.openbmc_project.Control.Host.Power_cap.service for PowerCap property \
 and applies the power cap values to the SOC using esmi oob library API's"
 
-SRC_URI = "git://git@github.com/AMDESE/amd-power-cap.git;branch=main;protocol=ssh"
-SRCREV = "${AUTOREV}"
+SRC_URI = "git://github.com/AMDESE/amd-power-cap.git;protocol=https;branch=main"
+SRCREV = "8ad293b364e27d741242a4ce818d2e8ff26484ee"
+
+SRC_URI += "\
+            file://0001-Fix-UB-on-getProperty-failure.patch \
+            file://0002-Fix-popen-return-value-check.patch \
+            file://0003-Fix-systemd-unit-install-path.patch \
+            file://0004-Switch-to-CPP20.patch \
+            "
 
 S = "${WORKDIR}/git"
 
@@ -15,7 +22,7 @@ inherit cmake pkgconfig systemd
 def get_service(d):
       return "xyz.openbmc_project.Control.Host.Power_cap.service"
 
-SYSTEMD_SERVICE_${PN} = "${@get_service(d)}"
+SYSTEMD_SERVICE:${PN} = "${@get_service(d)}"
 
 DEPENDS += " \
     amd-apml \
@@ -26,9 +33,9 @@ DEPENDS += " \
     sdbusplus \
     "
 
-RDEPENDS_${PN} += "amd-apml"
+RDEPENDS:${PN} += "amd-apml"
 
-FILES_${PN}  += "${systemd_system_unitdir}/xyz.openbmc_project.Control.Host.Power_cap.service"
+FILES:${PN}  += "${systemd_system_unitdir}/xyz.openbmc_project.Control.Host.Power_cap.service"
 
 
 

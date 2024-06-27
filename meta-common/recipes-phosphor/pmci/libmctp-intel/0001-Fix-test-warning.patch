@@ -1,0 +1,14 @@
+diff --git a/tests/test_astlpc.c b/tests/test_astlpc.c
+index 0e0dcca..cb3c2a0 100644
+--- a/tests/test_astlpc.c
++++ b/tests/test_astlpc.c
+@@ -89,6 +89,9 @@ int mctp_astlpc_mmio_kcs_write(void *data, enum mctp_binding_astlpc_kcs_reg reg,
+ {
+ 	struct mctp_binding_astlpc_mmio *mmio = binding_to_mmio(data);
+ 
++	assert(reg == MCTP_ASTLPC_KCS_REG_DATA ||
++	       reg == MCTP_ASTLPC_KCS_REG_STATUS);
++
+ 	if (reg == MCTP_ASTLPC_KCS_REG_DATA)
+ 		mmio->kcs[MCTP_ASTLPC_KCS_REG_STATUS] |= KCS_STATUS_OBF;
+ 

@@ -1,17 +1,18 @@
 SUMMARY = "AMD EPYC System Management Interface Library"
 DESCRIPTION = "AMD EPYC System Management Interface Library for user space APML implementation"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}:"
 
 LICENSE = "CLOSED"
 
 DEPENDS += "i2c-tools"
 DEPENDS += "i3c-tools"
-RDEPENDS_${PN} += "bash"
+RDEPENDS:${PN} += "bash"
 
-SRC_URI += "git://git@github.com/amd/apml_library.git;protocol=ssh"
-#SRC_URI += "git://git@github.com/amd/esmi_oob_library.git;protocol=ssh"
-SRCREV = "5327a39ddc244eaf69794c5a57d5fd5a5bbe3a87"
+#SRC_URI += "git://github.com/amd/apml_library.git;protocol=https;branch=master"
+SRC_URI += "git://github.com/amd/esmi_oob_library.git;protocol=https;branch=master"
+# apml-3.2.0
+SRCREV = "48d0cd98051ef7c8e97b958ce061b89dd6bbd0c8"
 
 SRC_URI += "file://0001-amd-apml-Enable-apml-library-with-i3c.patch \
             file://0002-amd-apml-select-APML-over-i2c-i3c.patch  \

@@ -1,7 +1,7 @@
 SUMMARY = "AMD MCTP over PCIe test tool"
 DESCRIPTION = "It allows to test the MCTP protocole over PCIe VDM"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}:"
 
 LICENSE = "CLOSED"
 
@@ -11,8 +11,8 @@ SRC_URI = "file://amd-mctp-tool.c \
 DEPENDS += "libmctp-intel"
 S = "${WORKDIR}"
 
-INSANE_SKIP_${PN} += "ldflags"
-RDEPENDS_${PN} += "bash"
+INSANE_SKIP:${PN} += "ldflags"
+RDEPENDS:${PN} += "bash"
 
 do_compile() {
     ${CXX} amd-mctp-tool.c -o amd-mctp-tool -lmctp_intel

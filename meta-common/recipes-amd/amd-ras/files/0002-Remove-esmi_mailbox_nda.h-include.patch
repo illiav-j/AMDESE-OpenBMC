@@ -1,0 +1,12 @@
+diff --git a/inc/ras.hpp b/inc/ras.hpp
+index aeffd39..0646c6c 100644
+--- a/inc/ras.hpp
++++ b/inc/ras.hpp
+@@ -21,7 +21,6 @@ extern "C" {
+ #include "apml.h"
+ #include "esmi_cpuid_msr.h"
+ #include "esmi_mailbox.h"
+-#include "esmi_mailbox_nda.h"
+ #include "esmi_rmi.h"
+ }
+ 

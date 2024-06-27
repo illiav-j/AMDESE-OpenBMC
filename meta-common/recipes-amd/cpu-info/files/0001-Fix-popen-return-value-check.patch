@@ -1,0 +1,22 @@
+From 04979f3fcbc28a02c4c250708e2e9d0798ce661b Mon Sep 17 00:00:00 2001
+From: Illia Volchanetskyi <Illia_Volchanetskyi6439@jabil.com>
+Date: Wed, 19 Jun 2024 19:32:52 +0300
+Subject: [PATCH] Fix popen return value check
+
+---
+ src/cpu_info.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/cpu_info.cpp b/src/cpu_info.cpp
+index fd7e28c..ea75ea3 100644
+--- a/src/cpu_info.cpp
++++ b/src/cpu_info.cpp
+@@ -528,7 +528,7 @@ bool CpuInfo::getNumberOfCpu()
+     {
+        // Setup pipe for reading and execute to get u-boot environment
+        pf = popen(COMMAND_NUM_OF_CPU,"r");
+-       if(pf > 0)
++       if(!pf)
+        {   // no error
+           if (fgets(data, COMMAND_LEN , pf) != NULL)
+           {

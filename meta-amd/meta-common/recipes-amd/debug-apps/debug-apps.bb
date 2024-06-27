@@ -1,12 +1,12 @@
 SUMMARY = "Aspeed eSPI debug apps"
 DESCRIPTION = "Aspeed debug applications to test espi controller"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}:"
 
 LICENSE = "CLOSED"
 
 DEPENDS += "systemd"
-RDEPENDS_${PN} += "bash libsystemd"
+RDEPENDS:${PN} += "bash libsystemd"
 
 inherit systemd
 
@@ -27,10 +27,10 @@ SRC_URI = "file://aspeed-espi.h  \
 	file://safs-addr-translator.service \
 	"
 
-SYSTEMD_SERVICE_${PN} = "safs-addr-translator.service"
+SYSTEMD_SERVICE:${PN} = "safs-addr-translator.service"
 
 S = "${WORKDIR}"
-INSANE_SKIP_${PN} += "ldflags already-stripped"
+INSANE_SKIP:${PN} += "ldflags already-stripped"
 
 do_compile() {
 	${CC} perif-test.c -o perif-test

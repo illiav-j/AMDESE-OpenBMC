@@ -6,7 +6,7 @@ LICENSE = "CLOSED"
 SRC_URI += " \
         file://amd-clear-cmos.sh \
         "
-RDEPENDS_${PN} += "bash"
+RDEPENDS:${PN} += "bash"
 S="${WORKDIR}"
 
 do_install() {
